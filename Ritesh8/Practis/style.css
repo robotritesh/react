@@ -1,0 +1,18 @@
+#containar3{
+    width: 70%;
+    margin-top: 30px;
+    margin-left: 230px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 8px;
+}
+
+#containar3>div{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#containar3>div>img{
+    width: 50%;
+    height: 250px;
+}

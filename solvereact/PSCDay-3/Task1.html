@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      let rootElement = document.getElementById("root")
+
+
+      let theme = "dark"
+
+      function App(){
+
+        const textDark = "A network is basically a collection of computers and other devices that are linked";
+        const textLight = "Each device on the network is referred to as a node, and each node has";
+
+        const textStyle = {
+          fontSize: "48px",
+          backgroundColor: theme === "dark" ? "black" : "white",
+          color: theme === "dark" ? "white" : "dark",
+        }
+        
+        const handleThemeChange  = () =>{
+          theme = theme === "dark" ? "light" : "dark",
+          renderApp()
+        }
+
+        return(
+          <div style={textStyle}>
+            {theme === "dark" ? textDark : textLight}
+            </div>
+        )
+      }
+
+      ReactDOM.createRoot(rootElement).render(<App/>)
+    </script>
+  </body>
+</html>
+

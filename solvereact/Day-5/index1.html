@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-5</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+ <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script type="text/babel">
+
+let rootElement = document.getElementById("root")
+
+function Child(props){
+    return(
+        <div>
+            <h1>child</h1>
+            <h2>{props.name}</h2>
+            <h3>{props.move}</h3>
+        </div>
+    )
+}
+
+function Parent(){
+    let name = "Rolex"
+    let move = "Hero"
+    return(
+        <div>
+            <h1>Parent</h1>
+            <Child name={name} move={move}/> 
+            </div>
+    )
+}
+
+ReactDOM.createRoot(rootElement).render(<Parent/>)
+  </script>
+</html>

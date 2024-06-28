@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form{
+            width: 30%;
+            height: 360px;
+            margin-top: 180px;
+            margin-left: 450px;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            border-radius: 5px;
+            
+        }
+
+        input{
+            font-size: 25px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        input[type="submit"]{
+        background-color: #0567AC;
+        padding: 5px;
+        width: 80%;
+        border: none;
+        border-radius: 8px;
+       }
+
+        
+    </style>
+</head>
+<body>
+    
+    <form>
+        <h1 style="padding: 5px;">Sign Up</h1>
+
+        <input type="text" placeholder="Enter your username">
+        <br>
+        <input type="email" placeholder="Enter your email" >
+        <br>
+        <input placeholder="Enter your password">
+        <br>
+        <input type="password" placeholder="Confirm password">
+        <br>
+        <input type="submit">
+    </form>
+
+    <script>
+        let form=document.querySelector("form")
+
+        let data=[]
+        // function saveData(key,arr){
+        //     localStorage.setItem("key",JSON.stringify(arr))
+        // }
+
+        function saveData(){
+            localStorage.setItem("data",JSON.stringify(data))
+        }
+        function loadData(){
+            let savedData=JSON.parse(localStorage.getItem("data"))
+            if(saveData){
+                data=savedData
+            }
+        }
+        function handleFormSubmit(e){
+            e.preventDefault()
+
+            let targetElemt=e.target
+            let username=targetElemt[0].value
+            let email=targetElemt[1].value
+            let password=targetElemt[2].value
+            let confirm=targetElemt[3].value
+
+            if(password == confirm){
+                let narr=data.filter(function(ele,i){
+                    return ele.user===username
+                })
+                if(narr.length>0){
+                    alert("username is already taken")
+                }else{
+
+                
+                let obj={
+                    user:username,
+                    email:email,
+                    password:password
+                }
+                data.push(obj)
+                // saveData("data",data)
+                saveData();
+                console.log(data);
+                alert("Registration successfull")
+                window.location.href="login.html" 
+            } 
+            }else{
+                alert("passwords not match")
+            }
+            
+        }
+        form.addEventListener("submit",function(event){
+            handleFormSubmit(event)
+        })
+        loadData
+    </script>
+</body>
+</html>

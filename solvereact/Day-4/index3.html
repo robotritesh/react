@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-4</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+ <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script type="text/babel">
+
+let rootElement = document.getElementById("root")
+
+function App(){
+   const [value,setValue] = React.useState("true")
+
+   function handleClick(){
+    setValue(!value)
+   }
+
+    return<div>
+    <babel>checkbox </babel>
+        <input 
+        type="checkbox"
+        checked={value}
+        onChange={handleClick}/>
+        </div>
+}
+
+ReactDOM.createRoot(rootElement).render(<App/>)
+  </script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JSX and Babel</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+      const fruits = ["Apple", "Mango", "Banana", "Kiwi", "Orange"];
+      const vegetables = ["Potato", "Tomato", "Cabbage", "Onion"];
+
+
+    //   function DisplayList({list,heading}){
+    //     return(
+    //         <div>
+    //             <h1>{heading}</h1>
+    //             <ol>{list[0]}</ol>
+    //             <ol>{list[1]}</ol>
+    //             <ol>{list[2]}</ol>
+    //             <ol>{list[3]}</ol>
+    //             <ol>{list[4]}</ol>
+    //             </div>
+                
+    //     )
+    //   }
+
+    function DisplayList({list,heading}){
+        return(
+            <div>
+                <h1>{heading}</h1>
+                <ol>{list.map(function (item){
+                    return<li>{item}</li>
+                })}</ol>
+                </div>
+        )
+    }
+
+
+    //   function DisplayList(list) {
+    //     // Returns items in list in the form of ordered list
+    //    return(
+    //     <ul>
+    //         {fruits.map((ele,index)=> (
+    //             <li value={index}>{ele}</li>
+    //         ))}
+    //         </ul>
+    //    )
+    
+    //   }
+
+    //   function DisplayLists(lists) {
+    //     // Returns items in list in the form of ordered list
+    //    return(
+    //     <ul>
+    //         {vegetables.map((ele,index)=> (
+    //             <li value={index}>{ele}</li>
+    //         ))}
+    //         </ul>
+    //    )
+    
+    //   }
+
+
+//<DisplayLists lists={vegetables} heading="vegetables"/>
+
+
+      function App() {
+        return (
+          <div>
+            <DisplayList list={fruits} heading="fruits"/>
+            <DisplayList list={vegetables} heading="vegetables"/>
+          </div>
+        );
+      }
+
+      const rootElement = document.getElementById("root");
+      const reactRoot = ReactDOM.createRoot(rootElement);
+
+      reactRoot.render(<App />);
+    </script>
+  </body>
+</html>

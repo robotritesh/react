@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-5</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+ <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+ <script type="text/babel">
+
+function User(props){
+    const {user} = props;
+    const { name, username, email} = user;
+    return(
+        <div style={{border: "1px solid black", padding: "20px", margin: "20px"}}>
+         <p>Name:{name}</p>
+         <p>Username:{username}</p>
+         <p>Email:{email}</p>  
+         </div>
+    )
+}
+
+function Parent(){
+    const [users, setUsers]= React.useState([])
+
+    async function fetchAndUpdateDate(){
+        try{
+            const initRespomse = await axios ({method:"get",
+                url: "https://jsonplaceholder.typicode.com/users",
+            })
+            const finalRespomse = initRespomse.data
+            setUsers(finalRespomse)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+
+    return(
+         <div>
+            {users.map((user)=>(
+                <User user={user}/>))}
+
+            <button onClick={fetchAndUpdateDate}>Get Data</button>
+            </div>
+    )
+}
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.createRoot(rootElement).render(<Parent/>)
+  </script>
+</html>

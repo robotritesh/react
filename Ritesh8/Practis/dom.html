@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="navbar">
+        <div>
+            <input placeholder="name of text">
+            <button id="searchbar">🔍</button>
+        </div>
+    </div>
+</body>
+<script>
+    let inputBox = document.querySelector("#navbar>div>input")
+
+    let searchBtn = document.querySelector("#searchbar")
+
+    function searchData(){
+        console.log(inputBox.velue)
+    }
+
+    searchBtn.addEventListener("click" , searchData)
+</script>
+</html>

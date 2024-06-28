@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2</title>
+</head>
+<body>
+    <div id="root"></div>
+    
+</body>
+ <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script type="text/babel">
+
+let rootElement = document.getElementById("root")
+         //jsx and non-js code is here// 
+let header = React.createElement("div",{},[
+    React.createElement("h1",{},"List of Fruiot"),
+    React.createElement("ol",{},[
+    React.createElement("li",{},"Appale"),
+    React.createElement("li",{},"Mango"),
+    React.createElement("li",{},"Kivi"),
+    React.createElement("li",{},"Orange"),]),
+]);
+
+//const messege = "<h1>Hello</h1>";
+
+
+// function messege(text){
+//     return <h1>{text}</h1>
+// }
+
+// let element = (
+// <>
+// {messege("Good morning")}
+// {messege("Good afternoon")}
+// {messege("Hello")}
+// </>
+// );
+
+function Messege(Proprtis){
+const styleObject = {color:Proprtis.colorOfText}
+
+    return <h1 style={styleObject}>{Proprtis.text}</h1>
+}
+
+function Navbar(){
+    return(
+        <div style={{
+            width:"100%",
+            backgroundColor:"blue",
+            color:"white",
+            padding:"20px",
+        }} >
+        Navbar
+        </div>
+    )
+
+}
+
+function Footer(){
+    return(
+        <div style={{
+            width:"100%",
+            backgroundColor:"black",
+            color:"white",
+            padding:"20px",
+        }} 
+        >
+        Footer
+        </div>
+    )
+}
+
+
+
+
+// let element = (
+//  <>
+//  <Navbar />
+//  <Messege text="Good morning" colorOfText="red"/>
+//  <Messege text="Good afternoon" colorOfText="blue"/>
+//  <Messege text="Good day" colorOfText="green"/>
+//  <Footer />
+// </>
+// );
+
+// ||
+
+function parentComponet(){
+    return(
+        <>
+ <Navbar />
+ <Messege text="Good morning" colorOfText="red"/>
+ <Messege text="Good afternoon" colorOfText="blue"/>
+ <Messege text="Good day" colorOfText="green"/>
+ <Footer />
+</>
+    );}
+
+ReactDOM.createRoot(rootElement).render(parentComponet())
+  </script>
+</html>

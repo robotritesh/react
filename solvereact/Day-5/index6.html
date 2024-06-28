@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-5</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+ <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+ <script type="text/babel">
+
+function App(){
+
+    const [formState,setFormState] = React.useState({
+        name: "",
+        age:null,
+        country: "",
+        isMarried: false,
+    });
+ 
+                   //   ||
+
+    // const [name,setName] = React.useState("")
+    // const [age,setAge] = React.useState(null)
+    // const [country,setCountry] = React.useState("")
+    // const [isMarried,setIsMarried] = React.useState(false)
+
+
+    function handleChange(e){
+        //const {name, value, checked} = e.target;
+
+
+        const updateFormStateValue = {
+            ...formState, 
+            [e.target.name]: e.target.type === "numbrer" 
+            ? Number (e.target.value)
+            :e.target.type === "checkbox"
+            ? e.target.checked 
+            : e.target.value,
+        }
+
+        setFormState(updateFormStateValue)
+    }
+
+    // function handleChange(e){
+    //     setName(e.target.value)
+    // }
+
+    function handalSubmit(e){
+        e.preventDefault()
+        const data={
+            name,
+            age,
+            country,
+            isMarried,
+        }
+        console.log(data)
+    }
+
+    // function handalAgeChange(e){
+    //     // const newAge = Number(e.target.value)
+    //     // setAge(newAge)
+    //     //    ||
+
+    //     setAge(Number(e.target.value))
+    // }
+
+    // function handalCountryChange(e){
+    //     setCountry(e.target.value)
+    // }
+
+    // function handeleIsMarriedchange(e){
+    //     setIsMarried(e.target.checked)
+    // }
+
+    return( <div>
+        <form onSubmit={handalSubmit}>
+            <label>
+                Name: <input name="name" value={formState.name} onChange={handleChange}/>
+            </label>
+
+            <label>
+                Age:{" "} <input name="age" value={formState.age} type="number" onChange={handleChange}/>
+            </label>
+         
+            <label>
+                Country : 
+                <select name="country" value={formState.country} onChange={handleChange}>
+                    <option value="">Select Country</option>
+                    <option value="india">india</option>
+                    <option value="chaina">chaina</option>
+                    <option value="uaa">usa</option>
+                </select>
+            </label>
+
+            <label>
+                Is User Married :
+                <input name="checkbox" type="checkbox" checked={formState.isMarried} onChange={handleChange}/>
+            </label>
+
+                <input type="submit" value="SUBMIT fORM"/>
+            </form>
+        </div>)
+}
+
+const rootElement = document.getElementById('root');
+
+ReactDOM.createRoot(rootElement).render(<App/>)
+  </script>
+</html>

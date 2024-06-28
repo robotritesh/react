@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day2</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+ <script src="https://unpkg.com/react@18.2.0/umd/react.production.min.js"></script>
+ <script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+ <script type="text/babel">
+let rootElement = document.getElementById("root")
+
+function LeftSidebar(){
+    return<div>Left Side bar</div>
+}
+
+function Feed(){
+    return<div>Feed</div>
+}
+
+function RightSidebar(){
+    return<div>Right side bar</div>
+}
+
+function Main(){
+    return<>
+    <LeftSidebar/>
+    <Feed/>
+    <RightSidebar/>
+    </>
+}
+
+
+function Layout(props){
+    return(
+    <div style={{display: "grid", gridTemplateColumns: "25% 50% 25%" }}>
+        {props.children}
+    </div>
+);
+}
+
+function Navbar(){
+    return<div>Navbar</div>
+}
+
+function returnNumber(){
+    return Math.floor(Math.random()*10)+1;
+}
+
+function Footer(){
+
+    const num = returnNumber();
+
+    const styles = {color: num<=5 ? "red" : "green"};
+
+    return num<=5 ?(
+        <div style = {styles}>Number {num} is less than 5</div>
+    ):(
+        <div style={styles}>Number {num} is greater than 5</div>
+);
+}
+
+function App(){
+    return(
+    <>
+    <Navbar/>
+<Layout>
+    <LeftSidebar/>
+    <Feed/>
+    <RightSidebar/>
+</Layout>
+<Footer/>
+    </>
+)
+}
+
+// <Navbar/>
+// <Layout>
+//     <LeftSidebar/>
+//     <Feed/>
+//     <RightSidebar/>
+// </Layout>
+
+
+ReactDOM.createRoot(rootElement).render(App())
+ </script>
+</html>
